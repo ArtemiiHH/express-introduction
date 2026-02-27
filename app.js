@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+
+app.use(express.json());
+
 const authorRouter = require("./routes/authorRouter.js");
 const bookRouter = require("./routes/bookRouter.js");
 const indexRouter = require("./routes/indexRouter.js");
