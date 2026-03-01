@@ -1,16 +1,16 @@
 const db = require("../db.js");
+const CustomNotFoundError = require("../errors/CustomNotFoundError.js");
 
-async function getAuthorById(req, res) {
+const getAuthorById = async (req, res) => {
   const { authorId } = req.params;
 
   const author = await db.getAuthorById(Number(authorId));
 
   if (!author) {
-    res.status(404).send("Author not found");
-    return;
+    throw new CustomNotFoundError("Author not found");
   }
 
   res.send(`Author name: ${author.name}`);
-}
+};
 
 module.exports = getAuthorById;

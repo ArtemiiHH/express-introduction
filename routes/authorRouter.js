@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { getAuthorById } = require("../controllers/authorController.js");
 
 const authorRouter = Router();
 
@@ -16,5 +17,6 @@ authorRouter.post("/", (req, res) => {
     data: newAuthor,
   });
 });
+authorRouter.get("/:authorId", getAuthorById);
 
 module.exports = authorRouter;
