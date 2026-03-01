@@ -12,7 +12,7 @@ app.use("/books", bookRouter);
 app.use("/", indexRouter);
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).send(err);
+  res.status(err.statusCode || 500).send(err.message);
 });
 
 const PORT = 3000;
